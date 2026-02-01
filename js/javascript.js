@@ -1,6 +1,7 @@
 function getComputerChoice() {
     const compChoice = Math.floor(Math.random() * 3);
-    const playerChoice = prompt("Rock, Scissors, or Paper?", "Rock");
+    // const playerChoice = prompt("Rock, Scissors, or Paper?", "Rock");
+    const playerChoice = "Rock";
     let comp;
     let player;
 
@@ -22,7 +23,12 @@ function getComputerChoice() {
         console.log("Please choose Rock, Paper, or Scissors");
     };
 
-console.log(player);
+    if (compChoice === player) {
+        console.log("Tie!")
+    }
+
+console.log("Computer Choice: ", comp);
+console.log("Player Choice: ", playerChoice);
 
 };
 
