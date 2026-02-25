@@ -1,5 +1,10 @@
+
+let pScore = 0;
+let cScore = 0;
+
+
 function getComputerChoice() {
-    const compChoice = Math.floor(Math.random() * 3);
+    let compChoice = Math.floor(Math.random() * 3);
     let comp;
 
     if (compChoice == 0) {
@@ -15,8 +20,9 @@ function getComputerChoice() {
     return (compChoice);
 }
 
+
 function getPlayerChoice() {
-    const player = prompt("Rock, Scissors, or Paper?", "Rock");
+    let player = prompt("Rock, Scissors, or Paper?", "Rock");
     let playerChoice;
 
     if (player == "Rock") {
@@ -32,25 +38,59 @@ function getPlayerChoice() {
     console.log("Player: ", player);
 
     return (playerChoice);
-
 }
 
+
+function scoreKeeper(win) {
+    if (win == "P") {
+        pScore = pScore + 1;
+    } else if (win == "C") {
+        cScore = cScore + 1;
+    } else {
+        console.log("No Winner")
+    }
+
+    console.log("Score is: Player:", pScore, " and Computer:", cScore)
+}
+
+
 function runGame() {
-    const C = getComputerChoice();
-    const P = getPlayerChoice();
+    let C = getComputerChoice();
+    let P = getPlayerChoice();
+    let win;
 
     if (C == P) {
         console.log("Tie!")
+        win = "T";
     } else if (C == 2 && P == 0) {
         console.log("Computer Wins")
+        win = "C";
     } else if (C == 0 && P == 2) {
         console.log("Player Wins")
+        win = "P";
     } else if (C < P) {
         console.log("Computer Wins")
+        win = "C";
     } else {
         console.log("Player Wins")
+        win = "P";
+    }
+
+    scoreKeeper(win);
+}
+
+
+function gameLoop() {
+    runGame();
+
+    let choice = prompt("Play again (Y/N)?", "Y");
+
+    if (choice == "Y") {
+        gameLoop();
+    } else {
+        console.log("Thanks for playing QUITTER")
     }
 
 }
 
-runGame();
+gameLoop();
