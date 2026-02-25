@@ -55,8 +55,8 @@ function scoreKeeper(win) {
 
 
 function runGame() {
-    let C = getComputerChoice();
     let P = getPlayerChoice();
+    let C = getComputerChoice();
     let win;
 
     if (C == P) {
